@@ -1,4 +1,3 @@
-import java.util.*
 import java.util.concurrent.Semaphore
 import java.util.concurrent.ThreadLocalRandom
 import java.util.concurrent.atomic.AtomicInteger
@@ -6,7 +5,6 @@ import java.util.concurrent.atomic.AtomicInteger
 
 class Barber(private val spaces: AtomicInteger, private val bavailable: Semaphore, private val cavailable: Semaphore) :
     Runnable {
-    private val ran: Random = Random()
     override fun run() {
         while (true) {
             try {

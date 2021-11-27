@@ -11,11 +11,11 @@ internal object BarberShop {
         val barbers = Semaphore(3, true)
         val customers = Semaphore(0, true)
         val openUp = Executors.newFixedThreadPool(3)
-        val employees: Array<Barber?> = arrayOfNulls(3)
+
         println("Opening up shop")
-        for (i in 0..2) {
-            employees[i] = Barber(spaces, barbers, customers)
-            openUp.execute(employees[i])
+        val employees: Array<Barber> = Array(3) { Barber(spaces, barbers, customers) }
+        employees.forEach {
+            openUp.execute(it)
         }
         while (true) {
             try {

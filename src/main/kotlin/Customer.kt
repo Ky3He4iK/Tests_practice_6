@@ -1,4 +1,3 @@
-import java.util.*
 import java.util.concurrent.Semaphore
 
 import java.util.concurrent.atomic.AtomicInteger
@@ -9,7 +8,6 @@ class Customer(
     private val bavailable: Semaphore,
     private val cavailable: Semaphore
 ) : Runnable {
-    private val ran: Random = Random()
     override fun run() {
         try {
             cavailable.release()
